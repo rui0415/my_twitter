@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style_timeline.css' %}" crossorigin="anonymous">
+    <script type="text/javascript" src="{% static 'hello/js/index.js' %}"></script>
+</head>
+
+<body>
+    <h1>いいねしたユーザー:</h1>
+
+    {% if like_names %}
+    {% for key, value in like_names.items %}
+    <div class="username">
+        <button><a href="{% url 'profile' user.id key %}">{{ value }}</a></button>
+    </div>
+    {% endfor %}
+    {% else %}
+    No like.
+    {% endif %}
+    <hr>
+    
+    <button><a class='body1' href="{% url 'timeline' user.id %}">Top</a></button>
+</body>
+
+</html>

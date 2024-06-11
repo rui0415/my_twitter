@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tweet detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style_timeline.css' %}" crossorigin="anonymous">
+    <script type="text/javascript" src="{% static 'hello/js/index.js' %}"></script>
+</head>
+
+<body>
+    <div class="ret">
+        <p class="username">{{ tweet.username }}</p>
+        <div>
+            <p>{{ tweet.tweet }}</p>
+            <div class="like">
+                <a href="{% url 'like_list_tweet' user.id tweet.id %}">Like</a>: <span
+                    id="like{{tweet.id}}">{{tweet.like}}</span><button onclick="like({{user.id}}, {{tweet.id}});"><span
+                        id="heart{{tweet.id}}">
+                        {% if tweet.id in like_list %}
+                        💗
+                        {% else %}
+                        ❤
+                        {%endif%}
+                    </span></button>
+            </div>
+            <small class="time">Posted at:{{ tweet.posted_at }}</small>
+        </div>
+        <br>
+        <div>
+            <button><a href="{% url 'timeline' user.id %}">Top</a></button>
+        </div>
+
+        <br>
+    </div>
+    <hr>
+
+    <div class="ret">
+        <h3>Reply</h3>
+        {% if replys %}
+        {% for reply in replys %}
+        <div>
+            <button><a href="{% url 'profile' user.id reply.user_id %}">
+                {{ reply.username | linebreaksbr }}</a></button><br>
+            <div>
+                <p>{{reply.reply}}</p>
+            </div>
+            <div>
+                <button><a href="{% url 'like_list_reply' user.id reply.id %}">Like</a>: <span
+                        id="like2{{reply.id}}">{{reply.like}}</span></button>
+                <button onclick="like2({{user.id}}, {{reply.id}});">
+                    <span id="heart2{{reply.id}}">
+                        {% if reply.id in like_list2 %}
+                        💗
+                        {% else %}
+                        ❤
+                        {%endif%}
+                    </span></button>
+            </div>
+            <small>{{ reply.posted_at }} </small>
+            <div>
+                <button><a href="{% url 'delete' user.id tweet.id %}">delete</a></button>
+            </div>
+            <hr>
+
+        </div>
+        {% endfor %}
+
+        {% else %}
+
+        <p>No reply.</p>
+        {% endif %}
+        <hr>
+    </div>
+    <div>
+        <button><a href="{% url 'timeline' user.id %}">Top</a></button>
+    </div>
+</body>
+
+</html>

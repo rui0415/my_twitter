@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style_timeline.css' %}" crossorigin="anonymous">
+</head>
+
+<body class="container">
+    {% if flag == 1 %}
+    <script>
+        alert("存在しないユーザーです");
+    </script>
+    {%endif%}
+    <h3>以下のフォームを入力してください。</h3>
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <p>メールアドレス<br>
+            <input type="email" name="mail">
+        </p>
+        <p>パスワード<br>
+            <input type="password" name="password">
+        </p>
+        <div class="center">
+            <button type="submit" class="button">ログイン</button>
+        </div>
+    </form>
+</body>
+
+</html>

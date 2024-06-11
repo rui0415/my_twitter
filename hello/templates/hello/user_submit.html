@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style_timeline.css' %}" crossorigin="anonymous">
+</head>
+
+<body class="container">
+    <h2>新規登録</h2>
+    <h3>以下のフォームを入力してください。</h3>
+    {% if flag == 1 %}
+    <script>
+        alert("既に存在するユーザーです");
+    </script>
+    {%endif%}
+    <form action="{% url 'user_submit' %}" method="POST">
+        {% csrf_token %}
+        <p>氏名<br>
+            <input type="text" name="name">
+        </p>
+        <p>ユーザーネーム<br>
+            <input type="text" name="username">
+        </p>
+        <p>メールアドレス<br>
+            <input type="email" name="mail">
+        </p>
+        <p>年齢<br>
+            <input type="number" name="age" min="18" max="99">
+        </p>
+        <p>パスワード<br>
+            <input type="password" name="password">
+        </p>
+        <div class="center">
+        <p>
+        <button type="submit" class="button">送信</button></p>
+        <p><a href="{% url 'login' %}">ログイン</a></p>
+        </div>
+    </form>
+</body>
+
+</html>

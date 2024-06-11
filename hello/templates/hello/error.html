@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>error</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style_timeline.css' %}" crossorigin="anonymous">
+</head>
+
+<body>
+    <p>違うユーザーのツイートは消せません</p>
+    <button><a href="{% url 'timeline' user.id%}">
+    戻る
+    </a></button>
+</body>
+
+</html>

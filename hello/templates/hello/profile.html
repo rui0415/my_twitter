@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style_timeline.css' %}" crossorigin="anonymous">
+    <script type="text/javascript" src="{% static 'hello/js/index.js' %}"></script>
+</head>
+
+<body>
+    <h1>{{ tweet_user.username }} PROFILE</h1>
+    {% for tweet in tweets %}
+    <div class="body1">
+
+        <h4>{{tweet.username}}</h4>
+        <div>
+            <p><a class="tweet" href="{% url 'detail' user.id tweet.id %}">{{ tweet.tweet }}</a></p>
+        </div>
+        <div class="like">
+            <button><a href="{% url 'like_list_tweet' user.id tweet.id %}">Like</a>: <span
+                    id="like{{tweet.id}}">{{tweet.like}}</span></button>
+            <button onclick="like({{user.id}}, {{tweet.id}});"><span id="heart{{tweet.id}}">
+                    {% if tweet.id in like_list %}
+                    💗
+                    {% else %}
+                    ❤
+                    {%endif%}
+                </span></button>
+        </div>
+        <small class="time">{{ tweet.posted_at }} </small>
+    </div>
+    <hr>
+    {% endfor %}
+    <hr>
+    
+    <button><a class='body1' href="{% url 'timeline' user.id %}">Top</a></button>
+</body>
+
+</html>

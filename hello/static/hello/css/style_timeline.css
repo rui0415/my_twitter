@@ -1,0 +1,80 @@
+h1 {
+    color: rgb(254, 254, 254);
+    font-size: 18pt;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: rgb(7, 43, 150);
+}
+
+h2 {
+    color: rgb(254, 254, 254);
+    font-size: 18pt;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: rgb(7, 43, 150);
+}
+
+button {
+    background-color: aliceblue;
+    border-radius: 1000px;
+    margin: 10px;
+    padding: 10px;
+}
+
+body {
+    background-color: aliceblue;
+    text-align: center;
+    font-style:oblique;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.mypage {
+    font-size: 17pt;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.username {
+    font-size: 20px;
+    margin: auto;
+    color:black;
+}
+
+.tweet {
+    margin-left: 15px;
+    color: black;
+    margin: auto;
+    font-size:13px;
+    padding: 10px;
+    border-radius: 10cm;
+    background-color: aliceblue;
+
+}
+
+.like {
+    margin: auto;
+    color: black;
+}
+
+.delete {
+    margin: auto;
+    color: black;
+}
+
+.ret {
+    border-radius: 1cm;
+    background-color: rgb(229, 240, 236);
+    display:inline-block;
+    text-align: center;
+    min-width: 100px;
+    padding: 5px;
+    margin: auto;
+    text-align: center;
+}
+
+.time {
+    margin-left: 15px;
+    color: gray;
+}

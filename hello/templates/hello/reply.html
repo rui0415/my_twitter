@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tweet</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style_timeline.css' %}" crossorigin="anonymous">
+</head>
+
+<body>
+    <form action="{% url 'reply' user.id tweet.id %}" method="post">
+        {% csrf_token %}
+        <div>
+            <textarea class="box" name="reply" placeholder="このツイートへの返信"  cols="200" rows="30" ></textarea>
+        </div>
+        <div class="center">
+            <button class="button" type="submit">送信</button>
+        </div>
+    </form>
+</body>
+
+</html>
